@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
     seller_id: {
@@ -19,7 +19,7 @@ const ProductSchema = new mongoose.Schema({
     },
     current_price: {
         type: Number,
-        required: true,
+        required: false,
     },
     start_time: {
         type: Date,

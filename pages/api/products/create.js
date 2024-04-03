@@ -12,14 +12,12 @@ export default async function handler(req, res) {
             title,
             description,
             starting_price,
-            current_price,
             start_time,
             end_time,
-            status,
             image_url,
         } = req.body;
 
-        if (!seller_id || !title || !description || !starting_price || !current_price || !start_time || !end_time || !status) {
+        if (!seller_id || !title || !description || !starting_price || !start_time || !end_time || !image_url ) {
             return res.status(400).json({ success: false, message: "Please fill all fields" });
         }
 
@@ -28,10 +26,8 @@ export default async function handler(req, res) {
             title,
             description,
             starting_price,
-            current_price,
             start_time,
             end_time,
-            status,
             image_url,
         });
 
