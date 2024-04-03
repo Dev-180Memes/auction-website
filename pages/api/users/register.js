@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const user = await User.create({
-            username,
+            userName: username,
             email,
             password: hashedPassword
         });
