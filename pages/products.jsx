@@ -28,21 +28,13 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Toaster />
       <div className="flex flex-wrap gap-4 mt-5">
-        {products && products.map((product) => { 
-          const date = new Date(product.start_time);
-          const endDate = new Date(product.end_time);
-
-          // Format the date and time
-          const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-          const formattedDateTime = date.toLocaleString('en-US', options);
-          const formattedEndDate = endDate.toLocaleString('en-US', options);
-
+        {products && products.map((product) => {
           return (
             <Card key={product._id} className='max-w-sm gap-3'>
               <div className="flex flex-col items-center pb-10">
@@ -57,13 +49,12 @@ const Products = () => {
                 <p className="text-md text-gray-500 mt-2">{product.description}</p>
                 <p className="text-md text-gray-500">Starting Price: {product.starting_price}</p>
                 <p className="text-md text-gray-500">Current Price: {product.current_price}</p>
-                <p className="text-md text-gray-500">Start Time: {formattedDateTime}</p>
-                <p className="text-md text-gray-500">End Time: {formattedEndDate}</p>
+                <p className="text-md text-gray-500">Start Time: {product.start_time.toString().split('T')[0]}</p>
+                <p className="text-md text-gray-500">End Time: {product.end_time.toString().split('T')[0]}</p>
               </div>
               <Button as={Link} href={`/bid/${product._id}`}>Bid</Button>
             </Card>
         )})}
-        
       </div>
     </div>
   )

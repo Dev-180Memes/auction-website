@@ -114,15 +114,15 @@ const List = () => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor='start_time' value='Start Time'/>
+            <Label htmlFor='start_time' value='Start Date'/>
           </div>
-          <TextInput id='start_time' type='datetime-local' required />
+          <TextInput id='start_time' type='date' required />
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor='end_time' value='End Time'/>
+            <Label htmlFor='end_time' value='End Date'/>
           </div>
-          <TextInput id='end_time' type='datetime-local' required />
+          <TextInput id='end_time' type='date' required />
         </div>
         <div>
           <div className="mb-2 block">

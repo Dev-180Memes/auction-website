@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 
 const BidSchema = new mongoose.Schema({
     product_id: {
-        type: ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
     },
     bidder_id: {
-        type: ObjectId,
-        ref: "Bidder",
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
     bid_amount: {
         type: Number,
