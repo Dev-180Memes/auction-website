@@ -48,6 +48,19 @@ export default async function handler(req, res) {
                 return res.status(400).json({ success: false, message: "Bid amount should be greater than starting price" });
             }
         } else {
+            const product = await Product.findById(product_id);
+            if (!product) {
+                return res.status(404).json({ success: false, message: "Product not found" });
+            }
+
+            if (new Date(product.end_time) < new Date()) {
+                // Set active to inactive
+                product.status = "inactive";
+                await product.save();
+
+                return res.status(400).json({ success: false, message: "Product auction has ended" });
+            }
+
             // Get the highest bid
             const highestBid = bids.reduce((prev, current) => (prev.bid_amount > current.bid_amount) ? prev : current);
             // Check if bid amount is greater than highest bid

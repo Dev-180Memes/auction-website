@@ -86,7 +86,20 @@ const Bids = () => {
     }
   }
 
-  const handleEndAuction = async () => {}
+  const handleEndAuction = async () => {
+    const response = await fetch(`/api/bids/end/${productId}`, {
+      method: "GET",
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      toast.success(data.message);
+      router.push('/');
+    } else {
+      toast.error(data.message);
+    }
+  }
 
   return (
     <div className="min-h-screen flex mx-5 my-5">
@@ -130,16 +143,16 @@ const Bids = () => {
             ))}
           </tbody>
           {/* If user id is the same as seller id and bid status is inactive show End Bid Button */}
-          {userId === productData.seller_id ? (
-            productData.status === 'inactive' ? (
-              <Button className='mt-5' onClick={handleEndAuction}>End Auction</Button>
-            ) : (
-              <Button className='mt-5' disabled>Auction is still ongoing</Button>
-            )
-          ) : (
-            null
-          )}
         </Table>
+        {userId === productData.seller_id ? (
+          productData.status === 'inactive' ? (
+            <Button className='mt-5' onClick={handleEndAuction}>End Auction</Button>
+          ) : (
+            <Button className='mt-5' disabled>Auction is still ongoing</Button>
+          )
+        ) : (
+          null
+        )}
       </div>
     </div>
   )

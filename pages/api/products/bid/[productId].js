@@ -22,7 +22,7 @@ export default async function handler(req, res) {
                 return res.status(404).json({ success: false, message: "Product not found" });
             }
 
-            const bids = await Bid.find({ product_id: productId }).populate("bidder_id");
+            const bids = await Bid.find({ product_id: productId }).populate('bidder_id');
 
             return res.status(200).json({ success: true, data: bids });
         }
