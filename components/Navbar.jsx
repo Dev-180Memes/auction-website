@@ -1,27 +1,50 @@
 import React from 'react'
 import { Navbar as Nav } from "flowbite-react"
 import Link from 'next/link'
+import { hamburger } from '@/assets/icons'
+import { logo } from '@/assets/images'
+import Image from 'next/image'
+import { navLinks } from '@/constants'
 
 const Navbar = () => {
   return (
-    <Nav fluid rounded>
-      <Nav.Brand as={Link} href="/">
-        {/* <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" /> */}
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Auction Website</span>
-      </Nav.Brand>
-      <Nav.Toggle />
-      <Nav.Collapse>
-        <Nav.Link as={Link} href="/" active>
-            Home
-        </Nav.Link>
-        <Nav.Link as={Link} href="/products">
-            Products
-        </Nav.Link>
-        <Nav.Link as={Link} href="/myItems">
-            My Shop
-        </Nav.Link>
-      </Nav.Collapse>
-    </Nav>
+    <header className="padding-x py-8 absolute z-10 w-full">
+      <nav className="flex justify-between items-center max-container">
+        <Link href="/">
+          <Image 
+            src={logo}
+            alt="logo"
+            width={50}
+            className='m-0 w-[50px]'
+          />
+        </Link>
+        <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
+          {navLinks.map((item) => (
+            <li key={item.label}>
+              <Link
+                href={item.href}
+                className='font-monteserrat leading-normal text-lg text-slate-gray'
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
+          <Link href='/myItems'>My Shop</Link>
+          <span>/</span>
+          <Link href='/list'>Sell</Link>
+        </div>
+        <div className="hidden max-lg:block">
+          <Image 
+            src={hamburger}
+            alt="hamburger icon"
+            width={25}
+            height={25}
+          />
+        </div>
+      </nav>
+    </header>
   )
 }
 
