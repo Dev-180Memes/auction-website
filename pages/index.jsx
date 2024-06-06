@@ -4,6 +4,9 @@ import Hero from '@/sections/Hero';
 import Products from '@/sections/Products';
 import SuperQuality from '@/sections/SuperQuality';
 import Services from '@/sections/Services';
+import CustomerReviews from '@/sections/CustomerReviews';
+import Subscribe from '@/sections/Subscribe';
+import Footer from '@/components/Footer';
 
 const Home = () => {
   return (
@@ -22,7 +25,13 @@ const Home = () => {
         <Services />
       </section>
       <section className="bg-pale-blue padding">
-        
+        <CustomerReviews />
+      </section>
+      <section className="padding-x sm:py-32 py-16 w-full">
+        <Subscribe />
+      </section>
+      <section className="bg-black padding-x padding-t pb-8">
+        <Footer />
       </section>
     </main>
   )
