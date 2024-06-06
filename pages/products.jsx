@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { toast, Toaster } from 'react-hot-toast';
-import { Card, Button } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import PopularProductCard from '@/components/PopularProductsCard';
+import Footer from '@/components/Footer';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -31,32 +31,33 @@ const Products = () => {
   // console.log(products);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <>
       <Toaster />
-      <div className="flex flex-wrap gap-4 mt-5">
-        {products && products.map((product) => {
-          return (
-            <Card key={product._id} className='max-w-sm gap-3'>
-              <div className="flex flex-col items-center pb-10">
-                <Image
-                  alt={product.title}
-                  height="96"
-                  src={product.image_url}
-                  width="96"
-                  className="mb-3 rounded-full shadow-lg"
-                />
-                <h2 className="text-lg font-semibold">{product.title}</h2>
-                <p className="text-md text-gray-500 mt-2">{product.description}</p>
-                <p className="text-md text-gray-500">Starting Price: {product.starting_price}</p>
-                <p className="text-md text-gray-500">Current Price: {product.current_price}</p>
-                <p className="text-md text-gray-500">Start Time: {product.start_time.toString().split('T')[0]}</p>
-                <p className="text-md text-gray-500">End Time: {product.end_time.toString().split('T')[0]}</p>
-              </div>
-              <Button as={Link} href={`/bid/${product._id}`}>Bid</Button>
-            </Card>
-        )})}
-      </div>
-    </div>
+      <main className="relative min-h-screen">
+        <Navbar />
+        <section className="padding">
+          <div className="max-container max-sm:mt-12">
+            <div className="flex flex-col justify-start gap-5">
+              <h2 className="text-4xl font-palanquin font-bold">
+                Our <span className="text-coral-red">Auctions</span>
+              </h2>
+              <p className="lg:max-w-lg mt-2 font-montserrat text-slate-gray">
+                Experience top-notch quality and uniqueness with our latest auction items. Discover a world of rare finds, collectibles, and valuable treasures.
+              </p>
+            </div>
+
+            <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-14">
+              {products.map((product) => (
+                <PopularProductCard key={product.title} {...product} />
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className='bg-black padding-x padding-t pb-8'>
+          <Footer />
+        </section>
+      </main>
+    </>
   )
 }
 

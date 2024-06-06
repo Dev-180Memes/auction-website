@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { star } from "../assets/icons";
+import Link from "next/link";
 
-const PopularProductCard = ({ image_url, title, current_price }) => {
+const PopularProductCard = ({ image_url, title, current_price, _id }) => {
   return (
-    <div className='flex flex-1 flex-col w-full max-sm:w-full'>
+    <Link 
+      href={`/bid/${_id}`} 
+      className='flex flex-1 flex-col w-full max-sm:w-full'
+    >
       <Image 
         src={image_url} 
         alt={title} 
@@ -28,7 +32,7 @@ const PopularProductCard = ({ image_url, title, current_price }) => {
       <p className='mt-2 font-semibold font-montserrat text-coral-red text-2xl leading-normal'>
         ${current_price}
       </p>
-    </div>
+    </Link>
   );
 };
 
