@@ -9,6 +9,8 @@ import customer2 from "./customer2.svg";
 
 import thumbnailBackground from "./thumbnail-background.svg";
 
+import shoe8 from "./shoe8.svg";
+
 export {
     logo,
     img1,
@@ -17,4 +19,5 @@ export {
     customer1,
     customer2,
     thumbnailBackground,
+    shoe8
 }

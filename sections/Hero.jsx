@@ -28,7 +28,7 @@ const Hero = () => {
                 Discover unique and valuable items, quality treasures, and one-of-a-kind pieces for your collection. Bid now to secure your rare finds.
             </p>
 
-            <Button label='Start Bidding Now' iconUrl={arrowRight} />
+            <Button label='Start Bidding Now' iconUrl={arrowRight} href={'/products'} />
 
             <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
                 {statistics.map((stat, index) => (

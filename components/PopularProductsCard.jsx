@@ -9,7 +9,7 @@ const PopularProductCard = ({ image_url, title, current_price }) => {
         alt={title} 
         width={282}
         height={282}
-        className='w-[282px] h-[282px]' 
+        className='w-[282px] h-[282px] object-cover rounded-xl' 
       />
       <div className='mt-8 flex justify-start gap-2.5'>
         <Image 

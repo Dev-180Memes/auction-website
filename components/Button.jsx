@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const Button = ({
     label,
@@ -8,7 +9,16 @@ const Button = ({
     textColor,
     borderColor,
     fullWidth,
+    href,
 }) => {
+    const router = useRouter()
+
+    const handleClick = () => {
+        if (href) {
+            router.push(href)
+        }
+    }
+
   return (
     <button
         className={`flex justify-center items-center gap-2 px-7 py-4 border font-montserrat text-lg leading-none
@@ -17,6 +27,7 @@ const Button = ({
                 ? `${backgroundColor} ${textColor} ${borderColor}`
                 : "bg-coral-red text-white border-coral-red"
         } rounded-full ${fullWidth && "w-full"}`}
+        onClick={handleClick}
     >
         {label}
 
