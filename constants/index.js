@@ -21,7 +21,7 @@ export const homeProducts = [
 ]
 
 export const statistics = [
-    { value: '1k+', label: "Brands" },
-    { value: '500+', label: "Shops" },
-    { value: '250k+', label: 'Customers' }
+    { value: '1k+', label: "Rare Items" },
+    { value: '500+', label: "Auction Houses" },
+    { value: '250k+', label: 'Bidders' }
 ]

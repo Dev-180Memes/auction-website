@@ -2,7 +2,7 @@ import logo from "./law.png";
 
 import img1 from "./img1.png";
 import img2 from "./img2.png";
-import img3 from "./img3.png";
+import img3 from "./img3.jpg";
 
 import customer1 from "./customer1.jpeg";
 import customer2 from "./customer2.svg";
