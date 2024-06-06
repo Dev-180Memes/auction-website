@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/sections/Hero';
 import Products from '@/sections/Products';
 import SuperQuality from '@/sections/SuperQuality';
+import Services from '@/sections/Services';
 
 const Home = () => {
   return (
@@ -16,6 +17,12 @@ const Home = () => {
       </section>
       <section className="padding">
         <SuperQuality />
+      </section>
+      <section className="padding-x py-10">
+        <Services />
+      </section>
+      <section className="bg-pale-blue padding">
+        
       </section>
     </main>
   )
