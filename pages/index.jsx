@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '@/components/Navbar';
 import Hero from '@/sections/Hero';
+import Products from '@/sections/Products';
 
 const Home = () => {
   return (
@@ -8,6 +9,9 @@ const Home = () => {
       <Navbar />
       <section className='xl:padding-l wide:padding-r padding-b'>
         <Hero />
+      </section>
+      <section className="padding">
+        <Products />
       </section>
     </main>
   )
