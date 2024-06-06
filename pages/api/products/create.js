@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
         return res.status(201).json({ success: true, data: product });
     } else if (method === "GET") {
-        const products = await Product.find();
+        const products = await Product.find().sort({ createdAt: -1 });
 
         return res.status(200).json({ success: true, data: products });
     } else {
