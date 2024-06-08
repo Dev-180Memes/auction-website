@@ -1,20 +1,18 @@
 import React from 'react'
-import {
-    Button,
-    Label,
-    TextInput
-} from 'flowbite-react';
 import { useRouter } from 'next/router';
 import { toast, Toaster } from 'react-hot-toast';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Button from '@/components/Button';
+import { useState } from 'react';
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const router = useRouter();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        const email = e.target.email1.value;
-        const password = e.target.password.value;
+    const handleLogin = async () => {
         const response = await fetch("/api/users/login", {
             method: "POST",
             headers: {
@@ -33,28 +31,42 @@ const Login = () => {
     }
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <>
         <Toaster />
-        <form className="flex max-w-md flex-col gap-4" onSubmit={handleLogin}>
-        <div>
-            <div className="mb-2 block">
-            <Label htmlFor="email1" value="Your email" />
-            </div>
-            <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
-        </div>
-        <div>
-            <div className="mb-2 block">
-            <Label htmlFor="password" value="Your password" />
-            </div>
-            <TextInput id="password" type="password" required />
-        </div>
-        <Button type="submit">Submit</Button>
-        <p>
-            Don&apos;t have an account {" "}
-            <Link href={'/signup'} className='underline'>Create Account</Link>
-        </p>
-        </form>
-    </div>
+        <main className="relative">
+            <Navbar />
+            <section className="padding-x sm:py-32 py-16 w-full">
+                <div className="max-container flex justify-between items-center max-lg:flex-col gap-10">
+                    <div>
+                        <h3 className="text-4xl leading-[68px] lg:max-w-md font-palanquin font-bold">
+                            Login to your
+                            <span className="text-coral-red"> Account</span>
+                        </h3>
+                        <p>
+                            Don&apos;t have an account {" "}
+                            <Link href={'/signup'} className='underline'>Create Account</Link>
+                        </p>
+                    </div>
+                    <div className="lg:max-w-[40%] w-full flex flex-col items-center max-sm:flex-col gap-5 p-2.5">
+                        <div className='flex flex-col'>
+                            <label htmlFor="email">Email Address</label>
+                            <input type="email" className="sm:border sm:border-slate-gray rounded-xl" placeholder='user@auction.com' value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+                        <div className='flex flex-col'>
+                            <label htmlFor="email">Password</label>
+                            <input type="password" className="sm:border sm:border-slate-gray rounded-xl" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        </div>
+                        <div className='flex max-sm:justify-end items-center max-sm:w-full'>
+                            <Button label='Login' fullWidth onClick={handleLogin} />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="bg-black padding-x padding-t pb-8">
+                <Footer />
+            </section>
+        </main>
+    </>
   )
 }
 

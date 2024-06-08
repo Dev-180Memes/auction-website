@@ -10,12 +10,16 @@ const Button = ({
     borderColor,
     fullWidth,
     href,
+    onClick,
+    type='button',
 }) => {
     const router = useRouter()
 
     const handleClick = () => {
         if (href) {
             router.push(href)
+        } else if (onClick) {
+            onClick();
         }
     }
 
@@ -28,6 +32,8 @@ const Button = ({
                 : "bg-coral-red text-white border-coral-red"
         } rounded-full ${fullWidth && "w-full"}`}
         onClick={handleClick}
+        type={type}
+
     >
         {label}
 
