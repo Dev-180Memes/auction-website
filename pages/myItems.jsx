@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import { decodeJwt } from "@/utils/decodeToken";
-import { Card, Button } from "flowbite-react";
-import Image from "next/image";
-import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import PopularProductCard from "@/components/PopularProductsCard";
 
 const MyItems = () => {
   const [userId, setUserId] = useState("");
@@ -50,56 +50,33 @@ const MyItems = () => {
   console.log(myItems);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
+    <>
       <Toaster />
-      <div className="flex flex-wrap gap-4 mt-5">
-        {myItems &&
-          myItems.map((product) => {
-            const date = new Date(product.start_time);
-            const endDate = new Date(product.end_time);
+      <main className="relative">
+        <Navbar />
+        <section className="padding">
+          <div className="max-container max-sm:mt-12">
+            <div className="flex flex-col justify-start gap-5">
+              <h2 className="text-4xl font-palanquin font-bold">
+                My <span className="text-coral-red">Items</span>
+              </h2>
+              <p className="lg:max-w-lg mt-2 font-montserrat text-slate-gray">
+                Here are the items you have listed for auction.
+              </p>
+            </div>
 
-            // Format the date and time
-            const options = {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-            };
-            const formattedDateTime = date.toLocaleString("en-US", options);
-            const formattedEndDate = endDate.toLocaleString("en-US", options);
-
-            return (
-              <Card key={product._id} className="max-w-sm gap-3">
-                <div className="flex flex-col items-center pb-10">
-                  <Image
-                    alt={product.title}
-                    height="96"
-                    src={product.image_url}
-                    width="96"
-                    className="mb-3 rounded-full shadow-lg"
-                  />
-                  <h2 className="text-lg font-semibold">{product.title}</h2>
-                  <p className="text-md text-gray-500 mt-2">{product.description}</p>
-                  <p className="text-md text-gray-500">Starting Price: {product.starting_price}</p>
-                  <p className="text-md text-gray-500">Current Price: {product.current_price}</p>
-                  <p className="text-md text-gray-500">Start Time: {formattedDateTime}</p>
-                  <p className="text-md text-gray-500">End Time: {formattedEndDate}</p>
-                  <Link href={`/bid/${product._id}`}>
-                    <Button className="mt-5">View Bids</Button>
-                  </Link>
-                </div>
-              </Card>
-            );
-          })}
-      </div>
-      {/* Sell a new products */}
-      <div className="flex flex-col items-center pb-10 mt-10">
-        <h2 className="text-lg font-semibold">Sell a new product</h2>
-        <p className="text-md text-gray-500 mt-2 mb-2">Click the button below to sell a new product</p>
-        <Button as={Link} href='/list'>Sell Product</Button>
-      </div>
-    </div>
+            <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-6 gap-14">
+              {myItems.map((product) => (
+                <PopularProductCard key={product.title} {...product} />
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="bg-black padding-x padding-t pb-8">
+          <Footer />
+        </section>
+      </main>
+    </>
   )
 };
 

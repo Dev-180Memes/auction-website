@@ -18,12 +18,12 @@ const List = () => {
 
       if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
         localStorage.removeItem("token");
-        router.push("/")
+        router.push("/login")
       } else {
         setUserId(decodedToken.id)
       }
     } else {
-      router.push("/")
+      router.push("/login")
     }
 
     
@@ -150,49 +150,6 @@ const List = () => {
         </section>
       </main>
     </>
-    // <div className='h-screen flex items-center justify-center'>
-    //   <Toaster />
-    //   <form className='flex max-w-md flex-col gap-4' onSubmit={handleProductListing}>
-    //     <h2 className='text-xl font-bold'>List a Product</h2>
-    //     <div>
-    //       <div className='mb-2 block'>
-    //         <Label htmlFor='title' value='Product Name' />
-    //       </div>
-    //       <TextInput id='title' type='text' placeholder='Product Name' required />
-    //     </div>
-    //     <div>
-    //       <div className='mb-2 block'>
-    //         <Label htmlFor='description' value='Description' />
-    //       </div>
-    //       <TextInput id='description' type='text' placeholder='Description' required />
-    //     </div>
-    //     <div>
-    //       <div className='mb-2 block'>
-    //         <Label htmlFor='starting_price' value='Starting Price' />
-    //       </div>
-    //       <TextInput id='starting_price' type='number' placeholder='Starting Price' required />
-    //     </div>
-    //     <div>
-    //       <div className="mb-2 block">
-    //         <Label htmlFor='start_time' value='Start Date'/>
-    //       </div>
-    //       <TextInput id='start_time' type='date' required />
-    //     </div>
-    //     <div>
-    //       <div className="mb-2 block">
-    //         <Label htmlFor='end_time' value='End Date'/>
-    //       </div>
-    //       <TextInput id='end_time' type='date' required />
-    //     </div>
-    //     <div>
-    //       <div className="mb-2 block">
-    //         <Label htmlFor='image' value='Product Image' />
-    //       </div>
-    //       <input type="file" name="image" id="image" />
-    //     </div>
-    //     <Button type="submit">Submit</Button>
-    //   </form>
-    // </div>
   )
 }
 
