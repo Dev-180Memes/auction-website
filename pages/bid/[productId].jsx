@@ -98,6 +98,21 @@ const Bids = () => {
     }
   }
 
+  const handleProductDelete = async() => {
+    const response = await fetch(`/api/bids/delete/${productId}`, {
+      method: "DELETE",
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      toast.success(data.message);
+      router.push('/');
+    } else {
+      toast.error(data.message);
+    }
+  }
+
   return (
     <>
       <Toaster />
@@ -170,6 +185,12 @@ const Bids = () => {
               ) : (
                 <Button className='mt-5' disabled label="Auction is still ongoing" />
               )
+            ) : (
+              null
+            )}
+
+            {userId === productData.seller_id ? (
+              <Button className='mt-5' onClick={handleProductDelete} label="Delete Product" />
             ) : (
               null
             )}
