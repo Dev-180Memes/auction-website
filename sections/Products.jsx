@@ -32,7 +32,7 @@ const Products = () => {
           Our <span className="text-coral-red">Latest</span> Auctions
         </h2>
         <p className="lg:max-w-lg mt-2 font-montserrat text-slate-gray">
-          Experience top-notch quality and uniqueness with our latest auction items. Discover a world of rare finds, collectibles, and valuable treasures.
+        Experience premium quality and freshness with our latest farm-to-table offerings. Discover a world of fresh produce, organic goods, and nature&apos;s finest treasures.
         </p>
       </div>
 

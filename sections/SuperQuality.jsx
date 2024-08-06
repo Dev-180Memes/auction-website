@@ -12,10 +12,10 @@ const SuperQuality = () => {
                 <span className="text-coral-red">Auction </span> Items
             </h2>
             <p className="mt-4 lg:max-w-lg info-text">
-                Ensuring exceptional quality and uniqueness, our meticulously curated auction items are designed to elevate your collection, providing you with unmatched rarity, innovation, and a touch of elegance.
+            Ensuring exceptional quality and freshness, our carefully curated farm produce is designed to elevate your culinary experience, providing you with unmatched flavor, sustainability, and a touch of nature's elegance.
             </p>
             <p className="mt-6 lg:max-w-lg info-text">
-                Our dedication to detail and excellence ensures your satisfaction.
+            Our commitment to excellence and attention to detail guarantees your satisfaction.
             </p>
             <div className="mt-11">
                 <Button label='View Details' href='/products' />

@@ -19,16 +19,16 @@ const Hero = () => {
 
             <h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
                 <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">
-                    The New Arrival of
+                The Latest Harvest of 
                 </span>
                 <br />
-                <span className="text-coral-red inline-block mt-3">Rare</span> Items
+                <span className="text-coral-red inline-block mt-3">Fresh</span> Foods
             </h1>
             <p className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
-                Discover unique and valuable items, quality treasures, and one-of-a-kind pieces for your collection. Bid now to secure your rare finds.
+            Explore our exclusive collection of fresh farm produce, carefully harvested to bring you the best nature has to offer. Bid now to secure the freshest and highest quality products directly from local farms.
             </p>
 
-            <Button label='Start Bidding Now' iconUrl={arrowRight} href={'/products'} />
+            <Button label='Start Bidding on Fresh Produce' iconUrl={arrowRight} href={'/products'} />
 
             <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
                 {statistics.map((stat, index) => (
